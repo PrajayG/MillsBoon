@@ -6,27 +6,41 @@ ulf = {'Adam':'M', 'Alex M':'M', 'Anisa':'F' , 'Bertie':'M', 'Hannah':'F', 'Laur
 'Flora':'F', 'Louisa':'F', 'Emma V':'F', 'Harry':'M', 'Darryl':'M', 'Prajay':'M'}
 
 
-characters = {'Jason': 'M'}
+characters = {'Jason': 'M', 'Jason Lombard': 'M', 'Sophie Melville': 'F', 'Sophie': 'F', 'Mother': 'F', 'Sophie':'F',
+	'Mr Lombard': 'M', 
+
+}
 
 def gatherText():
-	with open("/Users/Prajay/Programming/MBULF/texts/Emma Darcy- A Very Stylish Affair.txt") as f:
+	with open("D:/Prajay/2017/Q4/in-house/mills/MillsBoon/texts/Emma Darcy- A Very Stylish Affair.txt") as f:
 		text = f.readlines()
 		corpus = ''
 		for x in range(0,100):
 			corpus = corpus + text[x]
-	print corpus
-	print corpus.replace("Jason", "Adam")
+	
+
+	# print corpus.replace("Jason", "Adam")
 	replacement = random.choice(list(ulf.keys()))
+	if ulf[replacement] == 'M':
+		print corpus.replace("Jason", replacement)
+	else:
+		print 'Nothing found' 
 	print replacement
 	print ulf[replacement]
 
-gatherText()
-
-print ulf["Adam"]
 
 
 
 
-# str = "this is string example....wow!!! this is really string"
-# print str.replace("is", "was")
-# print str.replace("is", "was", 3)
+def findMatch():
+	ulfer = random.choice(list(ulf))
+	char = random.choice(list(characters))
+	if ulf[ulfer] == characters[char]:
+		return ulfer + char
+	else: 
+		findMatch()
+
+	
+
+match = findMatch()
+print match
