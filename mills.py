@@ -1,47 +1,50 @@
 
 import random
 
-ulf = {'Adam':'M', 'Alex M':'M', 'Anisa':'F', 'Bertie':'M', 'Hannah':'F', 'Laura':'F', 'Nikki':'F',
- 'Pete':'M', 'Robin':'M', 'Zoe':'F', 'Fiona':'F', 'Kat':'F', 'Emma R':'F',
-'Flora':'F', 'Louisa':'F', 'Emma V':'F', 'Harry':'M', 'Darryl':'M', 'Prajay':'M'}
+ulf = {'Adam':'M', 'Alex':'M', 'Anisa':'F', 'Bertie':'M', 'Hannah':'F', 'Laura':'F', 'Nikki':'F',
+ 'Pete':'M', 'Robin':'M', 'Zoe':'F', 'Fiona':'F', 'Kat':'F', 'EmRob':'F',
+'Flora':'F', 'Louisa':'F', 'Emma':'F', 'Harry':'M', 'Darryl':'M', 'Prajay':'M'}
 
 
-characters = {'Jason': 'M', 'Jason Lombard': 'M', 'Sophie Melville': 'F', 'Sophie': 'F', 'Mother': 'F', 'Sophie':'F','Mr Lombard': 'M'}
+characters = {'Zak': 'M', 'Sharif': 'M', 'Emily': 'F'}
 
+
+
+	
 def gatherText():
-	with open("D:/Prajay/2017/Q4/in-house/mills/MillsBoon/texts/Emma Darcy- A Very Stylish Affair.txt") as f:
-		text = f.readlines()
-		corpus = ''
-		for x in range(0,100):
-			corpus = corpus + text[x]
-	# Find a way to split into chapters.
+	with open("D:/Prajay/2017/Q4/in-house/mills/MillsBoon/texts/shiek/chapter1.txt") as f:
+		text = f.read() # This will be the whole text.
+		match = findMatch()
+		text = text.replace(match[1], match[0])
 
-	# print corpus.replace("Jason", "Adam")
-	replacement = random.choice(list(ulf.keys()))
-	if ulf[replacement] == 'M':
-		print corpus.replace("Jason", replacement)
-	else:
-		print 'Nothing found' 
-	print replacement
-	print ulf[replacement]
-	print match
+		text = text.replace(match[3], match[2])
+		print text
+		print match
+		
+	
 
 
 def findMatch():
 	ulfer = random.choice(list(ulf))
 	char = random.choice(list(characters))
+	ulfer2 = random.choice(list(ulf))
+	char2 = random.choice(list(characters))
+	doublecheck = [ulfer, char]
+	if (ulfer2 == doublecheck[0]) or (char2 == doublecheck[1]):
+		return findMatch()
 	replacements = []
-	if ulf[ulfer] == characters[char]:
+	if (ulf[ulfer] == characters[char]) and (ulf[ulfer2] == characters[char2]):
 		replacements.append(ulfer)
 		replacements.append(char)
-		return replacements
+		replacements.append(ulfer2)
+		replacements.append(char2)
+		print 'Success!'
+		return replacements	
 	else: 
+		print 'Error: same sex found'
 		return findMatch()
-|# Consider returning more than one match in the list that comes back?
-
+# Consider returning more than one match in the list that comes back?
 	
-
-match = findMatch()
 
 
 gatherText()
