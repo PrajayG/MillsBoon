@@ -1,18 +1,16 @@
 
 import random
 
-ulf = {'Adam':'M', 'Alex':'M', 'Anisa':'F', 'Bertie':'M', 'Hannah':'F', 'Laura':'F', 'Nikki':'F',
- 'Pete':'M', 'Robin':'M', 'Zoe':'F', 'Fiona':'F', 'Kat':'F', 'EmRob':'F',
-'Flora':'F', 'Louisa':'F', 'Emma':'F', 'Harry':'M', 'Darryl':'M', 'Prajay':'M'}
+ulf = { 'Gus':'F', 'Robin':'M'}
 
 
-characters = {'Zak': 'M', 'Sharif': 'M', 'Emily': 'F'}
+characters = {'Zak': 'M',  'Emily': 'F'}
 
 
 
 	
 def gatherText():
-	with open("D:/Prajay/2017/Q4/in-house/mills/MillsBoon/texts/shiek/chapter1.txt") as f:
+	with open("D:/Prajay/2017/Q4/in-house/mills/MillsBoon/texts/shiek/chapter11.txt") as f:
 		text = f.read() # This will be the whole text.
 		match = findMatch()
 		text = text.replace(match[1], match[0])
@@ -43,7 +41,7 @@ def findMatch():
 	else: 
 		print 'Error: same sex found'
 		return findMatch()
-# Consider returning more than one match in the list that comes back?
+
 	
 
 
